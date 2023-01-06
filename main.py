@@ -17,6 +17,3 @@ auth = tweepy.OAuth1UserHandler(
 
 #Create a Tweepy API client
 api = tweepy.API(auth)
-
-#List of six different politicians
-politicians = ["Joe Biden", "Donald Trump", "Nancy Pelosi", "Mitch McConnell", "Bernie Sanders", "Elizabeth Warren"]
