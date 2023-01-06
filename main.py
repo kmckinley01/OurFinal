@@ -17,3 +17,7 @@ auth = tweepy.OAuth1UserHandler(
 
 #Create a Tweepy API client
 api = tweepy.API(auth)
+
+tweet = 'this is an automated test tweet'
+
+api.update_status(tweet)
