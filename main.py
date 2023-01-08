@@ -1,4 +1,7 @@
 import tweepy #library for accessing the Twitter API
+import random
+
+tweetNum = random.randint(0, 21)
 
 #Put your Twitter API keys here
 consumer_key = "EMb5s2N9YhLb6TUcKx7qmjyO9"
@@ -18,6 +21,24 @@ auth = tweepy.OAuth1UserHandler(
 #Create a Tweepy API client
 api = tweepy.API(auth)
 
-tweet = 'this is an automated test tweet'
+# 200 tweets to be extracted
+number_of_tweets = 2000
+tweets = api.user_timeline(screen_name="SeffSaid")
 
-api.update_status(tweet)
+# Empty Array
+tmp = []
+
+# create array of tweet information: username,
+# tweet id, date/time, text
+tweets_for_csv = [tweet.text for tweet in tweets]  # CSV file created
+for j in tweets_for_csv:
+    # Appending tweets to the empty array tmp
+    tmp.append(j)
+
+    # Printing the tweets
+print(tmp)
+print(tweets)
+while (tmp[tweetNum].find("SeffSaid")>=0):
+    tweetNum = random.randint(0, 21)
+
+api.update_status(tmp[tweetNum])
