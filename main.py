@@ -1,5 +1,6 @@
 import tweepy #library for accessing the Twitter API
 import random
+from datetime import datetime
 
 tweetNum = random.randint(0, 21)
 
@@ -41,4 +42,25 @@ print(tweets)
 while (tmp[tweetNum].find("SeffSaid")>=0):
     tweetNum = random.randint(0, 21)
 
-api.update_status(tmp[tweetNum])
+    # Create a Tweepy API client
+api = tweepy.API(auth)
+dt = datetime.now()
+num = dt.weekday()
+if num == 0:
+    dayOfWeek = 'Monday'
+elif num == 1:
+    dayOfWeek = 'Tuesday'
+elif num == 2:
+    dayOfWeek = 'Wednesday'
+elif num == 3:
+    dayOfWeek = 'Thursday'
+elif num == 4:
+    dayOfWeek = 'Friday'
+elif num == 5:
+    dayOfWeek = 'Saturday'
+elif num == 6:
+    dayOfWeek = 'Sunday'
+
+Happy = 'Happy ' + str(dayOfWeek) + '!'
+
+api.update_status(Happy + "\n" + tmp[tweetNum] + "\n#DailyQuotes" + "\n#Inspiration")
